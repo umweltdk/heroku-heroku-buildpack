@@ -138,3 +138,4 @@
       > /dev/null
   ) &
 )
+PATH=$PATH:$build_dir/vendor/node/bin
