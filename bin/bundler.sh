@@ -25,4 +25,4 @@
 )
 export PATH="$GEM_HOME/bin:$build_dir/vendor/bundle/bin:$PATH"
 
-ls $build_dir/vendor/bundle
+ls $build_dir/vendor/bundle/bin
