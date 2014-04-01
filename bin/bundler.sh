@@ -4,8 +4,8 @@
 	export LC_ALL=en_US.UTF-8
 	export LANG=en_US.UTF-8
 
-	export GEM_PATH=$cache_dir/local-gems
-	export GEM_HOME=$GEM_PATH/gems
+	export GEM_HOME=$cache_dir/local-gems
+	export GEM_PATH=$GEM_PATH/gems
 
 	status "Installing bundler"
 	/usr/bin/env gem install bundler
