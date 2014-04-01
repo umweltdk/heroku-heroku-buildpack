@@ -137,10 +137,10 @@
       status $PATH
 
       # make sure that grunt and grunt-cli are installed locally
-      npm install grunt-cli
-      npm install grunt
+      npm install grunt-cli | indent
+      npm install grunt | indent
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
-      $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+      $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
     else
       error "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
     fi
