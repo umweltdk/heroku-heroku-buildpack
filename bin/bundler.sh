@@ -23,3 +23,5 @@
 	echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$HOME/vendor/bundle/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 )
 export PATH="$GEM_HOME/bin:$build_dir/vendor/bundle/bin:$PATH"
+
+ls $build_dir/vendor/bundle/bin
