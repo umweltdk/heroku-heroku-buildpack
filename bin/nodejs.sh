@@ -139,7 +139,7 @@
       npm install grunt |indent
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
-      ruby -v | status
+      ruby -v
 
       $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
     else
