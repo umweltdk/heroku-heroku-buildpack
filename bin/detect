@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -f $1/package.json -a -f $1/Gemfile]; then
+if [ -f $1/package.json -a -f $1/Gemfile ]; then
   echo "UmweltBuildpack"
   exit 0
 else
