@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export GEM_HOME=$build_dir/.gem/ruby/1.9.1
+
 (
-	export LC_ALL=en_US.UTF-8
-	export LANG=en_US.UTF-8
-
-	export GEM_HOME=$build_dir/.gem/ruby/1.9.1
-
 	PATH="$GEM_HOME/bin:$PATH"
 
 	status "Installing bundler"
@@ -24,5 +24,3 @@
 	echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$HOME/vendor/bundle/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 )
 export PATH="$GEM_HOME/bin:$build_dir/vendor/bundle/bin:$PATH"
-
-ls $build_dir/vendor/bundle/bin
