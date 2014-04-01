@@ -9,7 +9,6 @@
 	PATH="$GEM_HOME/bin:$PATH"
 
 	status "Installing bundler"
-	/usr/bin/env gem install bundler
 
 	status "Installing gems"
 	bundle install --without development:test --path $build_dir/vendor/bundle --binstubs $build_dir/vendor/bundle/bin --deployment | indent
