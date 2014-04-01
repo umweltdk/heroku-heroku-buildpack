@@ -9,9 +9,14 @@
 	PATH="$GEM_HOME/bin:$PATH"
 
 	status "Installing bundler"
+	/usr/bin/env gem install bundler | indent
 
 	status "Installing gems"
-	bundle install --without development:test --path $build_dir/vendor/bundle --binstubs $build_dir/vendor/bundle/bin --deployment | indent
+	bundle install --without development:test \
+				   --path $build_dir/vendor/bundle \
+				   --binstubs $build_dir/vendor/bundle/bin \
+				   --deployment \
+		| indent
 
 	status "Building ruby runtime environment"
 	mkdir -p $build_dir/.profile.d
