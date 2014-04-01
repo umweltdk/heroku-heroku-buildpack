@@ -134,6 +134,8 @@
         export_env_dir $env_dir
       fi
 
+      echo $PATH
+
       # make sure that grunt and grunt-cli are installed locally
       npm install grunt-cli
       npm install grunt
