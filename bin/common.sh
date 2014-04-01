@@ -16,3 +16,7 @@ indent() {
     *)      sed -u "$c";; # unix/gnu sed: -u unbuffered (arbitrary) chunks of data
   esac
 }
+
+cat_npm_debug_log() {
+  test -f $build_dir/npm-debug.log && cat $build_dir/npm-debug.log
+}
