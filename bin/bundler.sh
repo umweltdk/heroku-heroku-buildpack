@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
+(
+	status "Installing bundler"
+	gem install bundler | indent
 
-# Configure directories
-build_dir=$1
-cache_dir=$2
-env_dir=$3
-
-bp_dir=$(cd $(dirname $0); cd ..; pwd)
-
-# Load some convenience functions like status(), error(), and indent()
-source $bp_dir/bin/common.sh
-
-status "Installing bundler"
-gem install bundler | indent
-
-status "Installing gems"
-bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin --deployment | indent
+	status "Installing gems"
+	bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin --deployment | indent
+)
+export PATH=$PATH:vendor/bundle/bin
