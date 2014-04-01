@@ -140,6 +140,7 @@
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
       ruby -v
+      compass -v
 
       $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV |indent
     else
