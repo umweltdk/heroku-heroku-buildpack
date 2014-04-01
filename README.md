@@ -8,19 +8,17 @@ Usage
 
 Example usage:
 
-    $ ls
-    hello.txt
-
-    $ heroku create --stack cedar --buildpack http://github.com/heroku/heroku-buildpack-hello.git
+    $ heroku create --buildpack https://bitbucket.org/umwelt/umwelt-heroku-buildpack.git
 
     $ git push heroku master
     ...
-    -----> Heroku receiving push
-    -----> Fetching custom buildpack
-    -----> HelloFramework app detected
-    -----> Found a hello.txt
 
 The buildpack will detect that your app has a `hello.txt` in the root. If this file has contents, it will be copied to `goodbye.txt` with instances of the world `hello` changed to `goodbye`.
+
+    npm install
+    grunt heroku.$NODE_ENV #typically production
+    bundle install
+
 
 Hacking
 -------
