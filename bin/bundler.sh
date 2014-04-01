@@ -4,13 +4,16 @@
 	export LC_ALL=en_US.UTF-8
 	export LANG=en_US.UTF-8
 
-	export GEM_HOME=$cache_dir/local-gems
-	export GEM_PATH=$GEM_HOME/gems
+	export GEM_HOME=$build_dir/.gem/ruby/1.9.1
+
+	PATH="$GEM_HOME/bin:$PATH"
 
 	status "Installing bundler"
 	/usr/bin/env gem install bundler
 
 	status "Installing gems"
-	$GEM_HOME/bin/bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin --deployment | indent
+	bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin --deployment | indent
+
+	echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$HOME/vendor/bundle/bin:\$PATH\"" > $build_dir/.profile.d/ruby.sh
 )
-export PATH=$PATH:vendor/bundle/bin
+export PATH="$GEM_HOME/bin:$build_dir/vendor/bundle/bin:$PATH"
