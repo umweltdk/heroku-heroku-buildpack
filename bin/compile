@@ -11,6 +11,11 @@ env_dir=$3
 
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
 
+#Set env variables as in Prod
+status "Setting build environment"
+for f in $bp_dir/.profile.d/*; do
+	. $f
+done
 
 . $bp_dir/bin/common.sh
 
