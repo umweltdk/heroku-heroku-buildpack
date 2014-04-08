@@ -14,6 +14,7 @@ bp_dir=$(cd $(dirname $0); cd ..; pwd)
 
 #Set env variables as in Prod
 status "Setting build environment"
+HOME=$build_dir
 for f in $bp_dir/static/.profile.d/*; do
 	. $f
 done
