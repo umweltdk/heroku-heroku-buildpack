@@ -36,7 +36,6 @@
   mkdir -p $build_dir/vendor
   mv $build_dir/node-v$node_version-linux-x64 $build_dir/vendor/node
   chmod +x $build_dir/vendor/node/bin/*
-  PATH=$PATH:$build_dir/vendor/node/bin
 
   # Run subsequent node/npm commands from the build path
   cd $build_dir
@@ -120,11 +119,6 @@
     fi
   fi
 
-  # Update the PATH
-  status "Building runtime environment"
-  mkdir -p $build_dir/.profile.d
-  echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
-
   # Check and run Grunt
   (
     if [ -f $build_dir/grunt.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
@@ -158,4 +152,3 @@
       > /dev/null
   ) &
 )
-PATH=$PATH:$build_dir/vendor/node/bin
