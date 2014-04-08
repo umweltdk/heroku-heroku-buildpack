@@ -8,6 +8,7 @@
 
 	if test -d $cache_dir/.gem/ruby/1.9.1; then
 		status "Restoring gems from cache"
+		mkdir -p $build_dir/.gem/ruby/1.9.1
 		cp -r $cache_dir/.gem/ruby/1.9.1 $build_dir/.gem/ruby/1.9.1
 	fi
 
@@ -20,12 +21,14 @@
 
 	if test -d $BUNDLE_HOME; then
 		status "Rebuilding gem cache"
+		mkdir -p $cache_dir/.gem/ruby/1.9.1
 		cp -r $GEM_HOME $cache_dir/.gem/ruby/1.9.1
 	fi
 
 
 	if test -d $cache_dir/vendor/bundle; then
 		status "Restoring bundle directory from cache"
+		mkdir -p $build_dir/vendor/bundle
 		cp -r $cache_dir/vendor/bundle $build_dir/vendor/bundle
 	fi
 
@@ -42,6 +45,7 @@
 
 	if test -d $BUNDLE_HOME; then
 		status "Rebuilding bundle directory cache"
+		mkdir -p $cache_dir/vendor/bundle
 		cp -r $BUNDLE_HOME $cache_dir/vendor/bundle
 	fi
 )
