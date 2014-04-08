@@ -71,6 +71,27 @@
     npm install --userconfig $build_dir/.npmrc --production 2>&1 | indent
   )
 
+  # Check and run Grunt
+  (
+    GRUNTFILE=$(find $build_dir -iname "grunt*" -maxdepth 1)
+    if [ -n "$GRUNTFILE" ]; then
+      # get the env vars
+      if [ -d "$env_dir" ]; then
+        status "Exporting config vars to environment"
+        export_env_dir $env_dir
+      fi
+
+      # make sure that grunt and grunt-cli are installed locally
+      npm install | indent
+      npm install grunt-cli grunt | indent
+      status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
+
+      $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
+    else
+      error "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
+    fi
+  )
+
   # Persist goodies like node-version in the slug
   mkdir -p $build_dir/.heroku
 
@@ -110,27 +131,6 @@
       protip "Create a Procfile or specify a start script in package.json"
     fi
   fi
-
-  # Check and run Grunt
-  (
-    GRUNTFILE=$(find $build_dir -iname "grunt*" -maxdepth 1)
-    if [ -n "$GRUNTFILE" ]; then
-      # get the env vars
-      if [ -d "$env_dir" ]; then
-        status "Exporting config vars to environment"
-        export_env_dir $env_dir
-      fi
-
-      # make sure that grunt and grunt-cli are installed locally
-      npm install | indent
-      npm install grunt-cli grunt | indent
-      status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
-
-      $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
-    else
-      error "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
-    fi
-  )
 
 
   # Post package.json to nomnom service
