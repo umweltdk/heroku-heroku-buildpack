@@ -33,16 +33,15 @@
   curl $node_url -s -o - | tar xzf - -C $build_dir
 
   # Move node (and npm) into ./vendor and make them executable
-  mkdir -p $build_dir/vendor
-  mv $build_dir/node-v$node_version-linux-x64 $build_dir/vendor/node
-  chmod +x $build_dir/vendor/node/bin/*
+  mv $build_dir/node-v$node_version-linux-x64 $NODE_HOME
+  chmod +x $NODE_HOME/bin/*
 
   # Run subsequent node/npm commands from the build path
   cd $build_dir
 
   # If node_modules directory is checked into source control then
   # rebuild any native deps. Otherwise, restore from the build cache.
-  if test -d $build_dir/node_modules; then
+  if test -d $NODE_MODULES_HOME; then
     status "Found existing node_modules directory; skipping cache"
     status "Rebuilding any native dependencies"
     npm rebuild 2>&1 | indent
