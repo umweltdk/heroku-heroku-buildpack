@@ -10,6 +10,7 @@ cache_dir=$2
 env_dir=$3
 
 bp_dir=$(cd $(dirname $0); cd ..; pwd)
+. $bp_dir/bin/common.sh
 
 #Set env variables as in Prod
 status "Setting build environment"
@@ -17,7 +18,8 @@ for f in $bp_dir/.profile.d/*; do
 	. $f
 done
 
-. $bp_dir/bin/common.sh
+#Vendor folder is used by bundler and npm. and for Node.js
+mkdir -p $build_dir/vendor
 
 . $bp_dir/bin/bundler.sh
 . $bp_dir/bin/nodejs.sh
