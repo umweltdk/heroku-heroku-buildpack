@@ -21,3 +21,6 @@ done
 
 . $bp_dir/bin/bundler.sh
 . $bp_dir/bin/nodejs.sh
+
+status "Building runtime environment"
+cp -R $bp_dir/static/ $build_dir
