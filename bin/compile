@@ -26,4 +26,4 @@ mkdir -p $build_dir/vendor
 . $bp_dir/bin/nodejs.sh
 
 status "Building runtime environment"
-cp -R $bp_dir/static/ $build_dir
+cp -R $bp_dir/static/.profile.d $build_dir
