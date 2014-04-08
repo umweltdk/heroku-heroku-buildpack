@@ -123,6 +123,7 @@
       fi
 
       # make sure that grunt and grunt-cli are installed locally
+      npm install | indent
       npm install grunt-cli grunt | indent
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
