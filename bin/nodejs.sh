@@ -121,7 +121,8 @@
 
   # Check and run Grunt
   (
-    if [ -f $build_dir/grunt.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
+    GRUNTFILE=$(find $build_dir -iname "grunt*" -maxdepth 1)
+    if [ -n "$GRUNTFILE" ]; then
       # get the env vars
       if [ -d "$env_dir" ]; then
         status "Exporting config vars to environment"
