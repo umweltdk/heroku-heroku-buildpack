@@ -7,7 +7,7 @@
 
 	status "Installing bundler"
 	#gem install bundler |indent
-	/usr/bin/env gem install bundler | indent
+	gem install bundler | indent
 
 	status "Installing gems"
 	bundle install --gemfile=$build_dir/Gemfile \
