@@ -16,12 +16,12 @@
         status "Restoring gems from cache"
         mkdir -p $GEM_BUILD
         cp -R $GEM_CACHE $GEM_BUILD
+        status "Installing bundler"
+        gem update bundler --no-ri --no-rdoc | indent
+    else
+        status "Installing bundler"
+        gem install bundler --no-ri --no-rdoc | indent
     fi
-
-
-    status "Installing bundler"
-    #gem install bundler |indent
-    gem install bundler | indent
 
     #Purge cache
     rm -rf $GEM_CACHE
