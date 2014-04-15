@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 (
+	GEM_CACHE=$cache_dir/.gem/ruby/1.9.1
+	BUNDLE_CACHE=$cache_dir/vendor/bundle
+
 	if [ -d "$env_dir" ]; then
 	  status "Exporting config vars to environment"
 	  export_env_dir $env_dir
 	fi
 
-
-	if test -d $cache_dir/.gem/ruby/1.9.1; then
+	#Fetch cache
+	if test -d $GEM_CACHE; then
 		status "Restoring gems from cache"
-		mkdir -p $build_dir/.gem/ruby/1.9.1
-		cp -r $cache_dir/.gem/ruby/1.9.1 $build_dir/.gem/ruby/1.9.1
+		mkdir -p $GEM_HOME
+		cp -r $GEM_CACHE $GEM_HOME
 	fi
 
 
@@ -17,19 +20,21 @@
 	#gem install bundler |indent
 	gem install bundler | indent
 
+	#Purge cache
 	rm -rf $cache_dir/.gem/ruby/1.9.1
 
-	if test -d $BUNDLE_HOME; then
+	#Rebuild cache
+	if test -d $GEM_HOME; then
 		status "Rebuilding gem cache"
-		mkdir -p $cache_dir/.gem/ruby/1.9.1
-		cp -r $GEM_HOME $cache_dir/.gem/ruby/1.9.1
+		mkdir -p $GEM_CACHE
+		cp -r $GEM_HOME $GEM_CACHE
 	fi
 
 
-	if test -d $cache_dir/vendor/bundle; then
+	if test -d $BUNDLE_CACHE; then
 		status "Restoring bundle directory from cache"
-		mkdir -p $build_dir/vendor/bundle
-		cp -r $cache_dir/vendor/bundle $build_dir/vendor/bundle
+		mkdir -p $BUNDLE_HOME
+		cp -r $BUNDLE_CACHE $BUNDLE_HOME
 	fi
 
 	status "Installing gems"
@@ -40,12 +45,12 @@
 				   --deployment \
 		| indent
 
-	#Remove cache
-	rm -rf $cache_dir/vendor/bundle
+	#Purge cache
+	rm -rf $BUNDLE_CACHE
 
 	if test -d $BUNDLE_HOME; then
 		status "Rebuilding bundle directory cache"
-		mkdir -p $cache_dir/vendor/bundle
-		cp -r $BUNDLE_HOME $cache_dir/vendor/bundle
+		mkdir -p $BUNDLE_CACHE
+		cp -r $BUNDLE_HOME $BUNDLE_CACHE
 	fi
 )
