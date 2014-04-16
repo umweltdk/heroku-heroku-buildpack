@@ -24,10 +24,6 @@
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
-    echo $GEM_HOME | indent
-    ls -R $GEM_HOME
-    ls -R $GEM_CACHE
-
     #Purge cache
     rm -rf $GEM_CACHE
 
@@ -38,6 +34,7 @@
         cp -R $GEM_BUILD $GEM_CACHE
     fi
 
+    ls -R $GEM_CACHE
 
     if test -d $BUNDLE_CACHE; then
         status "Restoring bundle directory from cache"
