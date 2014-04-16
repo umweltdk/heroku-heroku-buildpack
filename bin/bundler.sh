@@ -30,7 +30,7 @@
     if test -d $GEM_BUILD; then
         status "Rebuilding gem cache"
         mkdir -p $GEM_CACHE
-        rsync $GEM_BUILD $GEM_CACHE
+        cp -R -v $GEM_BUILD/* $GEM_CACHE
     fi
 
     if test -d $BUNDLE_CACHE; then
@@ -53,6 +53,6 @@
     if test -d $BUNDLE_BUILD; then
         status "Rebuilding bundle directory cache"
         mkdir -p $BUNDLE_CACHE
-        cp -R $BUNDLE_BUILD $BUNDLE_CACHE
+        cp -R $BUNDLE_BUILD/* $BUNDLE_CACHE
     fi
 )
