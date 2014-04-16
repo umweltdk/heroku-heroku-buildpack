@@ -20,6 +20,7 @@
         gem update bundler --no-ri --no-rdoc | indent
     else
         status "Installing bundler"
+        echo $PATH | protip
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
