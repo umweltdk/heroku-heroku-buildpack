@@ -17,11 +17,11 @@
         mkdir -p $GEM_BUILD
         cp -R $GEM_CACHE $GEM_BUILD
         status "Installing bundler"
-        gem update bundler --no-ri --no-rdoc | indent
+        HOME=$GEM_BUILD gem update bundler --no-ri --no-rdoc | indent
     else
         status "Updating bundler"
         echo $PATH
-        gem install bundler --no-ri --no-rdoc | indent
+        HOME=$GEM_BUILD gem install bundler --no-ri --no-rdoc | indent
     fi
 
     echo $GEM_HOME | indent
