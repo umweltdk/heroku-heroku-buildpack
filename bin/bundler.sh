@@ -13,12 +13,12 @@
 
     #Fetch cache
     if test -d $GEM_CACHE; then
-    #     status "Restoring gems from cache"
-    #     mkdir -p $GEM_BUILD
-    #     cp -R $GEM_CACHE $GEM_BUILD
-    #     status "Installing bundler"
-    #     gem update bundler --no-ri --no-rdoc | indent
-    # else
+        status "Restoring gems from cache"
+        mkdir -p $GEM_BUILD
+        cp -R -v $GEM_CACHE $GEM_BUILD
+        status "Installing bundler"
+        gem update bundler --no-ri --no-rdoc | indent
+    else
         status "Updating bundler"
         gem install bundler --no-ri --no-rdoc | indent
     fi
@@ -36,7 +36,7 @@
     if test -d $BUNDLE_CACHE; then
         status "Restoring bundle directory from cache"
         mkdir -p $BUNDLE_BUILD
-        cp -R $BUNDLE_CACHE $BUNDLE_BUILD
+        cp -R -v $BUNDLE_CACHE $BUNDLE_BUILD
     fi
 
     status "Installing gems"
@@ -53,6 +53,6 @@
     if test -d $BUNDLE_BUILD; then
         status "Rebuilding bundle directory cache"
         mkdir -p $BUNDLE_CACHE
-        cp -R $BUNDLE_BUILD/* $BUNDLE_CACHE
+        cp -R -v $BUNDLE_BUILD/* $BUNDLE_CACHE
     fi
 )
