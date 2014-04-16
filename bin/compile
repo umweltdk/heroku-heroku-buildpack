@@ -18,11 +18,11 @@ status "Setting build environment"
 HOME=$build_dir
 export HOME
 
-echo $HOME | indent
-
 for f in $bp_dir/static/.profile.d/*; do
 	. $f
 done
+
+echo $GEM_HOME | indent
 
 #Vendor folder is used by bundler and npm. and for Node.js
 mkdir -p $build_dir/vendor
