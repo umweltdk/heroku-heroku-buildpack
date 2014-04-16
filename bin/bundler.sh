@@ -24,7 +24,9 @@
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
+    echo $GEM_HOME | indent
     ls -R $GEM_BUILD | indent
+    ls -R $GEM_CACHE | indent
 
     #Purge cache
     rm -rf $GEM_CACHE
