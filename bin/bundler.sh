@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 (
-    GEM_BUILD=$build_dir/.gem/
-    GEM_CACHE=$cache_dir/.gem/
+    GEM_BUILD=$build_dir/.gem
+    GEM_CACHE=$cache_dir/.gem
 
     BUNDLE_BUILD=$build_dir/vendor/bundle
     BUNDLE_CACHE=$cache_dir/vendor/bundle
@@ -30,7 +30,7 @@
     if test -d $GEM_BUILD; then
         status "Rebuilding gem cache"
         mkdir -p $GEM_CACHE
-        cp -R -v $GEM_BUILD $GEM_CACHE
+        rsync $GEM_BUILD $GEM_CACHE
     fi
 
     if test -d $BUNDLE_CACHE; then
