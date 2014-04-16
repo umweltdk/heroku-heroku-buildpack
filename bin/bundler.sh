@@ -31,13 +31,13 @@
     if test -d $GEM_BUILD; then
         status "Rebuilding gem cache"
         mkdir -p $GEM_CACHE
-        cp -R $GEM_BUILD $GEM_CACHE
+        cp -R -v $GEM_BUILD $GEM_CACHE
     fi
 
     if test -d $BUNDLE_CACHE; then
         status "Restoring bundle directory from cache"
         mkdir -p $BUNDLE_BUILD
-        cp -R -v $BUNDLE_CACHE $BUNDLE_BUILD
+        cp -R $BUNDLE_CACHE $BUNDLE_BUILD
     fi
 
     status "Installing gems"
