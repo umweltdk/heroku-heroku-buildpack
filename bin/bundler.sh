@@ -13,19 +13,19 @@
 
     #Fetch cache
     if test -d $GEM_CACHE; then
-        status "Restoring gems from cache"
-        mkdir -p $GEM_BUILD
-        cp -R $GEM_CACHE $GEM_BUILD
-        status "Installing bundler"
-        gem update bundler --no-ri --no-rdoc | indent
-    else
+    #     status "Restoring gems from cache"
+    #     mkdir -p $GEM_BUILD
+    #     cp -R $GEM_CACHE $GEM_BUILD
+    #     status "Installing bundler"
+    #     gem update bundler --no-ri --no-rdoc | indent
+    # else
         status "Updating bundler"
         echo $PATH
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
     echo $GEM_HOME | indent
-    ls -R $GEM_HOME/bin
+    ls -R $GEM_HOME
     ls -R $GEM_CACHE
 
     #Purge cache
