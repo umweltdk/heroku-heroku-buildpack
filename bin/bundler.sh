@@ -25,8 +25,8 @@
     fi
 
     echo $GEM_HOME | indent
-    ls -R $GEM_BUILD | indent
-    ls -R $GEM_CACHE | indent
+    ls -R $GEM_BUILD
+    ls -R $GEM_CACHE
 
     #Purge cache
     rm -rf $GEM_CACHE
@@ -44,8 +44,6 @@
         mkdir -p $BUNDLE_BUILD
         cp -R $BUNDLE_CACHE $BUNDLE_BUILD
     fi
-
-    PATH=$PATH:$GEM_BUILD/ruby/1.9.1/bin
 
     status "Installing gems"
     bundle install --gemfile=$build_dir/Gemfile \
