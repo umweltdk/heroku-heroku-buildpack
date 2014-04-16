@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 (
-    GEM_BUILD=$build_dir/.gem
-    GEM_CACHE=$cache_dir/.gem
+    GEM_BUILD=$build_dir/.gem/
+    GEM_CACHE=$cache_dir/.gem/
 
     BUNDLE_BUILD=$build_dir/vendor/bundle
     BUNDLE_CACHE=$cache_dir/vendor/bundle
@@ -20,7 +20,6 @@
     #     gem update bundler --no-ri --no-rdoc | indent
     # else
         status "Updating bundler"
-        echo $PATH
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
