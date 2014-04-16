@@ -19,8 +19,8 @@
         status "Installing bundler"
         gem update bundler --no-ri --no-rdoc | indent
     else
-        status "Installing bundler"
-        echo $PATH | protip
+        status "Updating bundler"
+        echo $PATH
         gem install bundler --no-ri --no-rdoc | indent
     fi
 
