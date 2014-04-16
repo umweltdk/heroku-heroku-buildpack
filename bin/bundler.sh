@@ -25,7 +25,7 @@
     fi
 
     echo $GEM_HOME | indent
-    ls -R $GEM_BUILD
+    ls -R $GEM_HOME/bin
     ls -R $GEM_CACHE
 
     #Purge cache
