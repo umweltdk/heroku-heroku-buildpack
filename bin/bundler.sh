@@ -17,11 +17,11 @@
         mkdir -p $GEM_BUILD
         cp -R $GEM_CACHE $GEM_BUILD
         status "Installing bundler"
-        HOME=$GEM_BUILD gem update bundler --no-ri --no-rdoc | indent
+        gem update bundler --no-ri --no-rdoc | indent
     else
         status "Updating bundler"
         echo $PATH
-        HOME=$GEM_BUILD gem install bundler --no-ri --no-rdoc | indent
+        gem install bundler --no-ri --no-rdoc | indent
     fi
 
     echo $GEM_HOME | indent
@@ -44,6 +44,8 @@
         mkdir -p $BUNDLE_BUILD
         cp -R $BUNDLE_CACHE $BUNDLE_BUILD
     fi
+
+    PATH=$PATH:$GEM_BUILD/ruby/1.9.1/bin
 
     status "Installing gems"
     bundle install --gemfile=$build_dir/Gemfile \
