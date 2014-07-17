@@ -105,7 +105,7 @@
       npm install gulp | indent
       status "Found Gulpfile, running `gulp heroku`"
 
-      $build_dir/node_modules/.bin/gulp heroku | indent
+      $build_dir/node_modules/.bin/gulp heroku:$NODE_ENV | indent
     else
       warn "No Gulpfile found"
     fi
