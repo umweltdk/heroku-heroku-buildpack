@@ -1,32 +1,35 @@
-Heroku buildpack: Hello
+Umwelt Heroku Buildpack
 =======================
-
-This is an example [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks).
 
 Usage
 -----
 
-Example usage:
+Example usage for a new app:
 
-    $ heroku create --buildpack https://bitbucket.org/umwelt/umwelt-heroku-buildpack.git
+```sh
+heroku create --buildpack https://bitbucket.org/umwelt/umwelt-heroku-buildpack.git
+```
 
-    $ git push heroku master
-    ...
+Or for an existing app:
 
-The buildpack will detect that your app has a `hello.txt` in the root. If this file has contents, it will be copied to `goodbye.txt` with instances of the world `hello` changed to `goodbye`.
+```sh
+heroku git:remote -a <APP_NAME>
+heroku config:set BUILDPACK_URL=https://bitbucket.org/umwelt/umwelt-heroku-buildpack.git
+```
 
-    npm install
-    grunt heroku.$NODE_ENV #typically production
-    bundle install
+Then:
 
+```sh
+git push heroku <BRANCH>:master
+```
 
-Hacking
--------
+The buildpack will detect that your app has a `package.json` and a `Gemfile` in the root. It then proceeds to build the project in approximately the following fashion:
 
-To use this buildpack, fork it on Github.  Push up changes to your fork, then create a test app with `--buildpack <your-github-url>` and push to it.
-
-For example, you can change the displayed name of the buildpack to `GoodbyeFramework`. Open `bin/detect` in your editor, and change `HelloFramework` to `GoodbyeFramework`.
-
-Commit and push the changes to your buildpack to your Github fork, then push your sample app to Heroku to test.  You should see:
-
-    -----> GoodbyeFramework app detected
+```sh
+bundle install
+npm install
+#EITHER
+grunt heroku:$NODE_ENV #typically production
+#OR
+guld heroku:$NODE_ENV
+```
