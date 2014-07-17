@@ -9,6 +9,10 @@ error() {
   exit 1
 }
 
+warn() {
+  echo " !     $*" >&2
+}
+
 indent() {
   c='s/^/       /'
   case $(uname) in
