@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -f $1/package.json -a -f $1/Gemfile ]; then
+PACKAGE_JSON=$(find $1 -iname "package.json" -maxdepth 1)
+GEMFILE=$(find $1 -iname "gemfile" -maxdepth 1)
+
+if [ -n $PACKAGE_JSON -a -n $GEMFILE ]; then
   echo "UmweltBuildpack"
   exit 0
 else
