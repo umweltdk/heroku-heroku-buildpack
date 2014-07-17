@@ -82,13 +82,32 @@
       fi
 
       # make sure that grunt and grunt-cli are installed locally
-      npm install | indent
       npm install grunt-cli grunt | indent
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
       $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
     else
       error "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
+    fi
+  )
+
+  # Check and run Gulp
+  (
+    GULPFILE=$(find $build_dir -iname "gulp*" -maxdepth 1)
+    if [ -n "$GULPFILE" ]; then
+      # get the env vars
+      if [ -d "$env_dir" ]; then
+        status "Exporting config vars to environment"
+        export_env_dir $env_dir
+      fi
+
+      # make sure that gulp is installed locally
+      npm install gulp | indent
+      status "Found Gulpfile, running `gulp heroku`"
+
+      $build_dir/node_modules/.bin/gulp heroku | indent
+    else
+      error "No Gulpfile (gulp.js) found"
     fi
   )
 
