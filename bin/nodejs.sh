@@ -87,7 +87,7 @@
 
       $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
     else
-      error "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
+      warn "No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
     fi
   )
 
@@ -107,7 +107,7 @@
 
       $build_dir/node_modules/.bin/gulp heroku | indent
     else
-      error "No Gulpfile (gulp.js) found"
+      warn "No Gulpfile found"
     fi
   )
 
