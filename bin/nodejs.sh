@@ -83,6 +83,7 @@
 
       # make sure that grunt and grunt-cli are installed locally
       npm install grunt-cli grunt | indent
+      npm install | indent #install devDependencies
       status "Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
       $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV | indent
@@ -103,6 +104,7 @@
 
       # make sure that gulp is installed locally
       npm install gulp | indent
+      npm install | indent #install devDependencies
       status "Found Gulpfile, running `gulp heroku`"
 
       $build_dir/node_modules/.bin/gulp heroku:$NODE_ENV | indent
