@@ -25,8 +25,8 @@ done
 #Vendor folder is used by bundler and npm. and for Node.js
 mkdir -p $build_dir/vendor
 
-GEMFILE=$(find $1 -iname "gemfile" -maxdepth 1)
-if [ -n $GEMFILE ]; then
+GEMFILE=$(find $build_dir -maxdepth 1 -iname "gemfile")
+if [ -a $GEMFILE ]; then
    . $bp_dir/bin/bundler.sh
 fi
 . $bp_dir/bin/nodejs.sh
