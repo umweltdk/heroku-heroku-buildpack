@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-PACKAGE_JSON=$(find $1 -iname "package.json" -maxdepth 1)
+PACKAGE_JSON=$(find $1 -maxdepth 1 -iname "package.json")
 
-if [ -n $PACKAGE_JSON ]; then
+if [ -a $PACKAGE_JSON ]; then
   echo "UmweltBuildpack"
   exit 0
 else
