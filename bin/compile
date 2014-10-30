@@ -26,7 +26,7 @@ done
 mkdir -p $build_dir/vendor
 
 GEMFILE=$(find $1 -iname "gemfile" -maxdepth 1)
-if [ -n $GEMFILE ]
+if [ -n $GEMFILE ]; then
    . $bp_dir/bin/bundler.sh
 fi
 . $bp_dir/bin/nodejs.sh
