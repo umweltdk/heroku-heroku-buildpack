@@ -1,6 +1,8 @@
 Umwelt Heroku Buildpack
 =======================
 
+Quick solution until we get something more general than "builpack-multi"
+
 Usage
 -----
 
